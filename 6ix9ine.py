@@ -102,55 +102,55 @@ async def on_message(message):
           msg = '**Support us by donating us;** https://www.paypal.me/CocoGT'
           await bot.send_message(message.channel, msg)
           
-      if 'Who is your creator <@!24791747004989441>?' in message.content:
+      if 'Who is your creator <@507241518524923904>?' in message.content:
           msg = 'Coco#6429 is my creator'.format(message)
           msg2 = await bot.send_message(message.channel, msg)
          
-      if 'hi <@!24791747004989441>' in message.content:
+      if 'hi <@507241518524923904>' in message.content:
           msg = 'Hello {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)
          
-      if 'bye <@!24791747004989441>' in message.content:
+      if 'bye <@507241518524923904>' in message.content:
           msg = 'Bye {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)
          
-      if 'Bye <@!24791747004989441>' in message.content:
+      if 'Bye <@507241518524923904>' in message.content:
           msg = 'Bye {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)
                  
-      if 'hello <@!24791747004989441>' in message.content:
+      if 'hello <@507241518524923904>' in message.content:
           msg = 'Hello {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)
          
-      if 'Hi <@!24791747004989441>' in message.content:
+      if 'Hi <@507241518524923904>' in message.content:
           msg = 'Hello {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)
           
-      if 'Hello <@!24791747004989441>' in message.content:
+      if 'Hello <@507241518524923904>' in message.content:
           msg = 'Hello {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)
           
-      if 'how are you <@!24791747004989441>?' in message.content:
+      if 'how are you <@507241518524923904>?' in message.content:
           msg = 'I am fine what about you? {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)
          
-      if 'How are you <@!24791747004989441>?' in message.content:
+      if 'How are you <@507241518524923904>?' in message.content:
           msg = 'I am fine what about you? {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)
           
-      if 'sup <@!24791747004989441>' in message.content:
+      if 'sup <@507241518524923904>' in message.content:
           msg = 'I am fine what about you? {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)
          
-      if 'Sup <@!24791747004989441>' in message.content:
+      if 'Sup <@507241518524923904>' in message.content:
           msg = 'I am fine what about you? {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)         
           
-      if 'I am also fine <@!24791747004989441>' in message.content:
+      if 'I am also fine <@507241518524923904>' in message.content:
           msg = 'Cool! {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)          
          
-      if 'i am also fine <@!24791747004989441>' in message.content:
+      if 'i am also fine <@507241518524923904>' in message.content:
           msg = 'Cool! {}'.format(message.author.name)
           msg2 = await bot.send_message(message.channel, msg)          
           
