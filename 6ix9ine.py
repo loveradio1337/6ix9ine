@@ -31,7 +31,7 @@ async def on_message_edit(before, after):
       user = before.author
       member = after.author
       for channel in user.server.channels:
-        if channel.name == 'coco-bot-logs':
+        if channel.name == 'like-logs':
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
             embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
             embed.set_author(name='Message edited')
@@ -50,7 +50,7 @@ async def on_message_delete(message):
         if channel.name == channelname:
           user = message.author
       for channel in user.server.channels:
-        if channel.name == 'coco-bot-logs':
+        if channel.name == 'like-logs':
           logchannel = channel
           r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
           embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
@@ -64,10 +64,9 @@ async def on_message_delete(message):
 @bot.event
 async def on_reaction_add(reaction, user):
   for channel in user.server.channels:
-    if channel.name == 'coco-bot-logs':
+    if channel.name == 'like-logs':
         logchannel = channel
-        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-        embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+        embed = discord.Embed(color = 0xC72323)
         embed.set_author(name='Reaction Added')
         embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
         embed.add_field(name = 'Message:',value ='{}'.format(reaction.message.content),inline = False)
@@ -78,10 +77,9 @@ async def on_reaction_add(reaction, user):
 @bot.event
 async def on_reaction_remove(reaction, user):
   for channel in user.server.channels:
-    if channel.name == 'coco-bot-logs':
+    if channel.name == 'like-logs':
         logchannel = channel
-        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-        embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+        embed = discord.Embed(color = 0xC72323)
         embed.set_author(name='Reaction Removed')
         embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
         embed.add_field(name = 'Message:',value ='{}'.format(reaction.message.content),inline = False)
@@ -98,61 +96,9 @@ async def on_message(message):
     if message.content.startswith('>say'):
       return
     else:
-      if message.content.startswith('>donate'):
-          msg = '**Support us by donating us;** https://www.paypal.me/CocoGT'
-          await bot.send_message(message.channel, msg)
-          
-      if 'Who is your creator <@507241518524923904>?' in message.content:
-          msg = 'Coco#6429 is my creator'.format(message)
-          msg2 = await bot.send_message(message.channel, msg)
-         
-      if 'hi <@507241518524923904>' in message.content:
-          msg = 'Hello {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)
-         
-      if 'bye <@507241518524923904>' in message.content:
-          msg = 'Bye {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)
-         
-      if 'Bye <@507241518524923904>' in message.content:
-          msg = 'Bye {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)
-                 
-      if 'hello <@507241518524923904>' in message.content:
-          msg = 'Hello {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)
-         
-      if 'Hi <@507241518524923904>' in message.content:
-          msg = 'Hello {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)
-          
-      if 'Hello <@507241518524923904>' in message.content:
-          msg = 'Hello {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)
-          
-      if 'how are you <@507241518524923904>?' in message.content:
-          msg = 'I am fine what about you? {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)
-         
-      if 'How are you <@507241518524923904>?' in message.content:
-          msg = 'I am fine what about you? {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)
-          
-      if 'sup <@507241518524923904>' in message.content:
-          msg = 'I am fine what about you? {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)
-         
-      if 'Sup <@507241518524923904>' in message.content:
-          msg = 'I am fine what about you? {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)         
-          
-      if 'I am also fine <@507241518524923904>' in message.content:
-          msg = 'Cool! {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)          
-         
-      if 'i am also fine <@507241518524923904>' in message.content:
-          msg = 'Cool! {}'.format(message.author.name)
-          msg2 = await bot.send_message(message.channel, msg)          
+      if message.content.startswith('>support'):
+          msg = '**Support us by donating us;** >invite'
+          await bot.send_message(message.channel, msg)        
           
       if 'fuck' in message.content:
           msg = 'Do not use bad words {0.author.name}'.format(message)
@@ -161,9 +107,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **fuck**',inline = False)
@@ -179,9 +124,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **FUCK**',inline = False)
@@ -197,9 +141,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **asshole**',inline = False)
@@ -215,9 +158,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **ASSHOLE**',inline = False)
@@ -233,9 +175,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **Fuck**',inline = False)
@@ -251,9 +192,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **porn**',inline = False)
@@ -269,9 +209,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **idiot**',inline = False)
@@ -287,9 +226,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **Porn**',inline = False)
@@ -305,9 +243,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **bitch**',inline = False)
@@ -323,9 +260,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **Bitch**',inline = False)
@@ -341,9 +277,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **pussy**',inline = False)
@@ -359,9 +294,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **Shit**',inline = False)
@@ -377,9 +311,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **shit**',inline = False)
@@ -395,9 +328,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **Pussy**',inline = False)
@@ -413,9 +345,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **Dick**',inline = False)
@@ -427,9 +358,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **dick**',inline = False)
@@ -445,9 +375,8 @@ async def on_message(message):
           await asyncio.sleep(5)
           await bot.delete_message(msg2)
           for channel in user.server.channels:
-            if channel.name == 'coco-bot-logs':
-                r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-                embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            if channel.name == 'like-logs':
+                embed = discord.Embed(color = 0xC72323)
                 embed.set_author(name='Warned user')
                 embed.add_field(name = 'User: **{0}**'.format(user.name),value ='UserID: **{}**'.format(user.id),inline = False)
                 embed.add_field(name = 'Reason: **Used bad words**',value ='Word: **dick**',inline = False)
@@ -455,55 +384,5 @@ async def on_message(message):
                 embed.add_field(name = 'Channel:',value ='{}'.format(message.channel.name),inline = False)
                 embed.add_field(name = 'Message:',value ='{}'.format(message.content),inline = False)
                 await bot.send_message(channel, embed=embed)
-
-@bot.event
-async def on_member_join(member):
-    for channel in member.server.channels:
-        if channel.name == 'welcome':
-            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed = discord.Embed(title=f'Welcome {member.name} to {member.server.name}', description='Please  do not forget to read the rules and dont try to break any one of them', color = discord.Color((r << 16) + (g << 8) + b))
-            embed.add_field(name='__Thanks for joining__', value='**I hope you will be active here.**', inline=True)
-            embed.set_thumbnail(url='https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif') 
-            embed.set_image(url = member.avatar_url)
-            embed.add_field(name='__Join position__', value='{}'.format(str(member.server.member_count)), inline=True)
-            embed.add_field(name='Time of joining here', value=member.joined_at)
-            await bot.send_message(channel, embed=embed) 
-
-@bot.event
-async def on_member_remove(member):
-    for channel in member.server.channels:
-        if channel.name == 'welcome':
-            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed = discord.Embed(title=f'{member.name} just left {member.server.name}', description='Good bye ! We will gonna miss you ', color = discord.Color((r << 16) + (g << 8) + b))
-            embed.add_field(name='__User left__', value='**We hope you will be back soon .**', inline=True)
-            embed.add_field(name='**Your join position was**', value=member.joined_at)
-            embed.set_thumbnail(url=member.avatar_url)
-            await bot.send_message(channel, embed=embed)
-
-@bot.event
-async def on_member_join(member):
-    for channel in member.server.channels:
-        if channel.name == '★彡-welcome-彡★':
-            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed = discord.Embed(title=f'Welcome {member.name} to {member.server.name}', description='Please  do not forget to read the rules and dont try to break any one of them', color = discord.Color((r << 16) + (g << 8) + b))
-            embed.add_field(name='__Thanks for joining__', value='**I hope you will be active here.**', inline=True)
-            embed.set_thumbnail(url='https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif') 
-            embed.set_image(url = member.avatar_url)
-            embed.add_field(name='__Join position__', value='{}'.format(str(member.server.member_count)), inline=True)
-            embed.add_field(name='Time of joining here', value=member.joined_at)
-            await bot.send_message(channel, embed=embed) 
-
-@bot.event
-async def on_member_remove(member):
-    for channel in member.server.channels:
-        if channel.name == '★彡-welcome-彡★':
-            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed = discord.Embed(title=f'{member.name} just left {member.server.name}', description='Good bye! We will gonna miss you ', color = discord.Color((r << 16) + (g << 8) + b))
-            embed.add_field(name='__User left the server__', value='**We hope you will be back soon.**', inline=True)
-            embed.add_field(name='**👇Your join position here was👇**', value=member.joined_at)
-            embed.set_thumbnail(url=member.avatar_url)
-            await bot.send_message(channel, embed=embed)
-
-
 
 bot.run(os.environ['Token'])
